@@ -60,11 +60,12 @@ if(gets(file_source) && file_source!='\0' )
        // printf("temp content:%s\n",buffer);
 	if(dessize>srcsize)
 	{
-		puts("destination file large source file ");
+		fputs("destination file large source file ",stderr);
 		exit(4);
 	}
 	puts("please input your append bytes.\n");
-        scanf("%d\n",&append_size);
+        if(scanf("%d\n",&append_size)==0);
+	{fputs("input not a positive number",stderr);exit(5);}
 	printf("appendsize:%d\n",append_size);
 	printf("appendsize/srcsize:%d\n",append_size/srcsize);
         for(int i=0;i<append_size/srcsize;i++)
